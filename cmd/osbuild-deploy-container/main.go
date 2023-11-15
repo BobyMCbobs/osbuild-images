@@ -173,7 +173,7 @@ func main() {
 
 	fmt.Printf("Building manifest: %s\n", manifestPath)
 
-	if _, err := osbuild.RunOSBuild(mf, osbuildStore, outputDir, []string{"qcow2"}, nil, nil, false, os.Stderr); err != nil {
+	if _, err := osbuild.RunOSBuild(mf, osbuildStore, outputDir, []string{"image"}, nil, nil, false, os.Stderr); err != nil {
 		check(err)
 	}
 

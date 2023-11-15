@@ -75,7 +75,7 @@ func pipelines(baseImage *ostree.ImageOptions, config *BuildConfig, arch string,
 	case platform.ARCH_X86_64.String():
 		img.Platform = &platform.X86{
 			BasePlatform: platform.BasePlatform{
-				ImageFormat: platform.FORMAT_QCOW2,
+				ImageFormat: platform.FORMAT_RAW,
 			},
 			BIOS:       true,
 			UEFIVendor: "fedora",
@@ -84,8 +84,7 @@ func pipelines(baseImage *ostree.ImageOptions, config *BuildConfig, arch string,
 		img.Platform = &platform.Aarch64{
 			UEFIVendor: "fedora",
 			BasePlatform: platform.BasePlatform{
-				ImageFormat: platform.FORMAT_QCOW2,
-				QCOW2Compat: "1.1",
+				ImageFormat: platform.FORMAT_RAW,
 			},
 		}
 	}
@@ -107,7 +106,7 @@ func pipelines(baseImage *ostree.ImageOptions, config *BuildConfig, arch string,
 	check(err)
 	img.PartitionTable = pt
 
-	img.Filename = "disk.qcow2"
+	img.Filename = "disk.raw"
 
 	return img, nil
 }

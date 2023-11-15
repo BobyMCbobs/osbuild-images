@@ -13,15 +13,16 @@ var partitionTables = distro.BasePartitionTableMap{
 		Type: "gpt",
 		Partitions: []disk.Partition{
 			{
-				Size:     1 * common.MebiByte,
+				Size:     2 * common.MebiByte,
 				Bootable: true,
 				Type:     disk.BIOSBootPartitionGUID,
 				UUID:     disk.BIOSBootPartitionUUID,
 			},
 			{
-				Size: 501 * common.MebiByte,
-				Type: disk.EFISystemPartitionGUID,
-				UUID: disk.EFISystemPartitionUUID,
+				Size:     256 * common.MebiByte,
+				Bootable: true,
+				Type:     disk.EFISystemPartitionGUID,
+				UUID:     disk.EFISystemPartitionUUID,
 				Payload: &disk.Filesystem{
 					Type:         "vfat",
 					UUID:         disk.EFIFilesystemUUID,
@@ -33,7 +34,7 @@ var partitionTables = distro.BasePartitionTableMap{
 				},
 			},
 			{
-				Size: 1 * common.GibiByte,
+				Size: 768 * common.MebiByte,
 				Type: disk.FilesystemDataGUID,
 				UUID: disk.FilesystemDataUUID,
 				Payload: &disk.Filesystem{
@@ -46,7 +47,7 @@ var partitionTables = distro.BasePartitionTableMap{
 				},
 			},
 			{
-				Size: 2 * common.GibiByte,
+				Size: 4 * common.GibiByte,
 				Type: disk.FilesystemDataGUID,
 				UUID: disk.RootPartitionUUID,
 				Payload: &disk.Filesystem{
